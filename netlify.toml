@@ -4,6 +4,7 @@
 
 [build.environment]
   TOML_FILE_VAR = "TOML_FILE_VAR_value"
+  SITE_ENV_VAR = "Override"
 
 [[headers]]
   # Define which paths this specific [[headers]] block will cover
