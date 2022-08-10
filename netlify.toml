@@ -3,7 +3,7 @@
   publish = "dist/"
 
 [build.environment]
-  VAR_TOML_FILE = "VAR_TOML_FILE_value"
+  TOML_FILE_VAR = "TOML_FILE_VAR_value"
 
 [[headers]]
   # Define which paths this specific [[headers]] block will cover

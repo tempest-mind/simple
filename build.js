@@ -9,10 +9,10 @@ const indexFile = 'dist/index.html';
   console.log('path.join(indexFile)', path.join(indexFile));
   let html = await fs.readFile(path.join(indexFile), 'utf8');
   console.log('html', html);
-  let VAR_TOML_FILE = process.env.VAR_TOML_FILE || '';
-  console.log('VAR_TOML_FILE', VAR_TOML_FILE);
-  let VAR_NETLIFY_CREATE = process.env.VAR_NETLIFY_CREATE || '';
-  console.log('VAR_NETLIFY_CREATE', VAR_NETLIFY_CREATE);
+  let TOML_FILE_VAR = process.env.TOML_FILE_VAR || '';
+  console.log('TOML_FILE_VAR', TOML_FILE_VAR);
+  let SITE_ENV_VAR = process.env.SITE_ENV_VAR || '';
+  console.log('SITE_ENV_VAR', SITE_ENV_VAR);
   let INCOMING_HOOK_BODY  = process.env.INCOMING_HOOK_BODY || '';
   console.log('INCOMING_HOOK_BODY', INCOMING_HOOK_BODY);
   if (INCOMING_HOOK_BODY) {
@@ -23,8 +23,8 @@ const indexFile = 'dist/index.html';
       console.log('Unable to parse json', INCOMING_HOOK_BODY);
     }
   }
-  html = html.replace('<!--VAR_TOML_FILE-->', VAR_TOML_FILE);
-  html = html.replace('<!--VAR_NETLIFY_CREATE-->', VAR_NETLIFY_CREATE);
+  html = html.replace('<!--TOML_FILE_VAR-->', TOML_FILE_VAR);
+  html = html.replace('<!--SITE_ENV_VAR-->', SITE_ENV_VAR);
   if (typeof INCOMING_HOOK_BODY === 'object') {
     html = html.replace('<!--INCOMING_HOOK_BODY-->', JSON.stringify(INCOMING_HOOK_BODY, null, 2));
   }
