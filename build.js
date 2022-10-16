@@ -24,6 +24,7 @@ const indexFile = 'dist/index.html';
     INCOMING_HOOK_BODY = JSON.stringify(INCOMING_HOOK_BODY, null, 2);
   }
   html = html.replace('<!--INCOMING_HOOK_BODY-->', INCOMING_HOOK_BODY);
+  html = html.replace('<!--env-->', process.env);
   await fs.writeFile(indexFile, html);
 })();
 
