@@ -7,6 +7,7 @@ const indexFile = 'dist/index.html';
   let TOML_FILE_VAR = process.env.TOML_FILE_VAR || '';
   let SITE_ENV_VAR = process.env.SITE_ENV_VAR || '';
   let INCOMING_HOOK_BODY  = process.env.INCOMING_HOOK_BODY || '';
+  let INCOMING_HOOK_TITLE  = process.env.INCOMING_HOOK_TITLE || 'Environment Test';
   console.log('TOML_FILE_VAR', TOML_FILE_VAR);
   console.log('SITE_ENV_VAR', SITE_ENV_VAR);
   console.log('INCOMING_HOOK_BODY', INCOMING_HOOK_BODY);
@@ -23,6 +24,7 @@ const indexFile = 'dist/index.html';
   if (typeof INCOMING_HOOK_BODY === 'object') {
     INCOMING_HOOK_BODY = JSON.stringify(INCOMING_HOOK_BODY, null, 2);
   }
+  html = html.replace('<!--INCOMING_HOOK_TITLE-->', INCOMING_HOOK_TITLE);
   html = html.replace('<!--INCOMING_HOOK_BODY-->', INCOMING_HOOK_BODY);
   html = html.replace('<!--env-->', JSON.stringify(process.env, null, 2));
   await fs.writeFile(indexFile, html);
