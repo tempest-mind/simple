@@ -29,7 +29,7 @@ const indexFile = 'dist/index.html';
   html = html.replace('<!--INCOMING_HOOK_TITLE-->', INCOMING_HOOK_TITLE);
   html = html.replace('<!--INCOMING_HOOK_BODY-->', INCOMING_HOOK_BODY);
   html = html.replace('<!--env-->', JSON.stringify(process.env, null, 2));
-  html = html.replace('<!--type-->', isEoBuild ? 'EO' : 'Developer (Code Update)');
+  html = html.replace('<!--type-->', isEoBuild ? 'EO  (Content Update or Test Button)' : 'Developer (Code Update)');
   await fs.writeFile(indexFile, html);
 })();
 
