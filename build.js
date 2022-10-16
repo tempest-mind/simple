@@ -8,6 +8,8 @@ const indexFile = 'dist/index.html';
   let SITE_ENV_VAR = process.env.SITE_ENV_VAR || '';
   let INCOMING_HOOK_BODY  = process.env.INCOMING_HOOK_BODY || '';
   let INCOMING_HOOK_TITLE  = process.env.INCOMING_HOOK_TITLE || 'Environment Test';
+  let isEoBuild = INCOMING_HOOK_TITLE.test(/^TGT.*_/);
+  INCOMING_HOOK_TITLE = INCOMING_HOOK_TITLE.replace(/^(TGT.*)_(.*)/, '$2 ($1)');
   console.log('TOML_FILE_VAR', TOML_FILE_VAR);
   console.log('SITE_ENV_VAR', SITE_ENV_VAR);
   console.log('INCOMING_HOOK_BODY', INCOMING_HOOK_BODY);
@@ -27,6 +29,7 @@ const indexFile = 'dist/index.html';
   html = html.replace('<!--INCOMING_HOOK_TITLE-->', INCOMING_HOOK_TITLE);
   html = html.replace('<!--INCOMING_HOOK_BODY-->', INCOMING_HOOK_BODY);
   html = html.replace('<!--env-->', JSON.stringify(process.env, null, 2));
+  html = html.replace('<!--type-->', isEoBuild ? 'EO' : 'Developer (Code Update)');
   await fs.writeFile(indexFile, html);
 })();
 
