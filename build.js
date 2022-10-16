@@ -9,7 +9,7 @@ const indexFile = 'dist/index.html';
   let INCOMING_HOOK_BODY  = process.env.INCOMING_HOOK_BODY || '';
   let INCOMING_HOOK_TITLE  = process.env.INCOMING_HOOK_TITLE || 'Environment Test';
   let isEoBuild = /^TGT.*_/.test(INCOMING_HOOK_TITLE);
-  INCOMING_HOOK_TITLE = INCOMING_HOOK_TITLE.replace(/^(TGT.*)_(.*)/, '$2 ($1)');
+  INCOMING_HOOK_TITLE = INCOMING_HOOK_TITLE.replace(/^(TGT.*)_(.*)/, '$2 (<i>$1</i>)');
   console.log('TOML_FILE_VAR', TOML_FILE_VAR);
   console.log('SITE_ENV_VAR', SITE_ENV_VAR);
   console.log('INCOMING_HOOK_BODY', INCOMING_HOOK_BODY);

@@ -21,12 +21,22 @@
 <body>
   
 <h1><!--INCOMING_HOOK_TITLE--></h1>
+
 <hr>
 <p>
   <strong>Build Initiated by:</strong> <pre><!--type--></pre>
 </p>
-<hr>
 
+<hr>
+<h3><pre>INCOMING_HOOK_BODY</pre></h3>
+<p>
+  <i>process.env.INCOMING_HOOK_BODY</i>
+</p>
+<pre>
+  <!--INCOMING_HOOK_BODY-->
+</pre>
+
+<hr>
 <h3><pre>TOML_FILE_VAR</pre></h3>
 <p>
   <i>process.env.TOML_FILE_VAR</i><br>
@@ -45,15 +55,6 @@
 </p>
 <pre>
   <!--SITE_ENV_VAR-->
-</pre>
-
-<hr>
-<h3><pre>INCOMING_HOOK_BODY</pre></h3>
-<p>
-  <i>process.env.INCOMING_HOOK_BODY</i>
-</p>
-<pre>
-  <!--INCOMING_HOOK_BODY-->
 </pre>
 
 <hr>
