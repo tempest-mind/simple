@@ -35,8 +35,6 @@ let download = async (serverUrl, channelToken, authToken) => {
     let url = '';
     let api = '';
     let isPreview = Boolean(authToken);
-    console.log('authToken', authToken);
-    console.log('isPreview', isPreview);
     if (isPreview) {
       api = '/content/preview/api/v1.1/assets/';
       proxySettings = Object.assign(proxySettings, {
