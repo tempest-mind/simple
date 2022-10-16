@@ -35,6 +35,7 @@ let download = async (serverUrl, channelToken, authToken) => {
     let url = '';
     let api = '';
     let isPreview = Boolean(authToken);
+    console.log('isPreview', isPreview);
     if (isPreview) {
       api = '/content/preview/api/v1.1/assets/';
       proxySettings = Object.assign(proxySettings, {
@@ -48,6 +49,7 @@ let download = async (serverUrl, channelToken, authToken) => {
       api = '/content/published/api/v1.1/assets/';
     }
     url = serverUrl + api + assetId + '/native/' + assetName + '?channelToken=' + channelToken;
+    console.log('url', url);
 
     const response = await axios.get(url, Object.assign(proxySettings, {
       responseType: 'stream'
