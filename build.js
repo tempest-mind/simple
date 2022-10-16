@@ -83,13 +83,15 @@ let download = async (serverUrl, channelToken, authToken) => {
       console.log('Unable to parse json', INCOMING_HOOK_BODY);
     }
   }
-  if (typeof INCOMING_HOOK_BODY === 'object') {
-    INCOMING_HOOK_BODY = JSON.stringify(INCOMING_HOOK_BODY, null, 2);
-  }
   let serverUrl = (INCOMING_HOOK_BODY && INCOMING_HOOK_BODY.SERVER_URL) || process.env.SERVER_URL || '';
   let channelToken = (INCOMING_HOOK_BODY && INCOMING_HOOK_BODY.CHANNEL_TOKEN) || process.env.CHANNEL_TOKEN || '';
   let authToken = (INCOMING_HOOK_BODY && INCOMING_HOOK_BODY.AUTH_TOKEN) || process.env.AUTH_TOKEN || '';
   let img = await download(serverUrl, channelToken, authToken);
+  
+  // Convert to string
+  if (typeof INCOMING_HOOK_BODY === 'object') {
+    INCOMING_HOOK_BODY = JSON.stringify(INCOMING_HOOK_BODY, null, 2);
+  }
 
   html = html.replace('<!--ASSET-->', img);
   html = html.replace('<!--TOML_FILE_VAR-->', TOML_FILE_VAR);
