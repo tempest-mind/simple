@@ -8,6 +8,8 @@ const pipeline = util.promisify(stream.pipeline);
 
 const distDir = 'dist/'
 const indexFile = path.join(distDir, 'index.html');
+
+// Hardcoding the single asset for demo purposes.
 const assetName = '404-test.png';
 const assetPath = path.join(distDir, assetName);
 const assetId = 'CONT4778DFFB40034B7485389B8B41A96427';
@@ -17,9 +19,9 @@ const httpsProxyAgent = require('https-proxy-agent');
 const GlobalAgent = require('global-agent');
 GlobalAgent.bootstrap();
 
-let proxySettings = {};
+let axiosConfig = {};
 if (process.env.GLOBAL_AGENT_HTTP_PROXY) {
-  proxySettings = {
+  axiosConfig = {
     proxy: false,
     httpsAgent: new httpsProxyAgent(process.env.GLOBAL_AGENT_HTTP_PROXY)
   }
@@ -37,7 +39,7 @@ let download = async (serverUrl, channelToken, authToken) => {
     let isPreview = Boolean(authToken);
     if (isPreview) {
       api = '/content/preview/api/v1.1/assets/';
-      proxySettings = Object.assign(proxySettings, {
+      axiosConfig = Object.assign(axiosConfig, {
         headers: {
           'authorization': 'Bearer ' + authToken,
           'content-type': 'application/json'
@@ -50,7 +52,7 @@ let download = async (serverUrl, channelToken, authToken) => {
     url = serverUrl + api + assetId + '/native/' + assetName + '?channelToken=' + channelToken;
     console.log('url', url);
 
-    const response = await axios.get(url, Object.assign(proxySettings, {
+    const response = await axios.get(url, Object.assign(axiosConfig, {
       responseType: 'stream'
     }));
     await pipeline(response.data, fs.createWriteStream(assetPath));

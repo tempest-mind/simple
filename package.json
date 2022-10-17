@@ -8,7 +8,8 @@
     "clean": "rm -r ./dist",
     "build": "mkdir dist && cp src/index.html dist && node build.js",
     "build-full": "rm -r ./dist && mkdir dist && cp src/index.html dist && node build.js",
-    "build-script": "node build.js"
+    "build-script": "node build.js",
+    "build-hook": "node build-hook.js"
   },
   "repository": {
     "type": "git",
