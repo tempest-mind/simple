@@ -3,9 +3,9 @@
   publish = "dist/"
 
 [build.environment]
-  TOML_FILE_VAR = "TOML_FILE_VAR_value"
   SERVER_URL = "https://devpod.mycontentdemo.com"
   CHANNEL_TOKEN = "128d71622b1a4fa3bf38c5f0eae13e29"
+  TOML_FILE_VAR = "TOML_FILE_VAR_value"
   #SITE_ENV_VAR = "Override"
 
 [[headers]]

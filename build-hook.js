@@ -20,7 +20,7 @@ if (process.env.GLOBAL_AGENT_HTTP_PROXY) {
 
   let buildHookUrl = process.env.BUILD_HOOK_URL || '';
   let buildHookBranch = process.env.BUILD_HOOK_BRANCH || '';
-  let buildHookTitle = process.env.BUILD_HOOK_TITLE || '';
+  let buildHookTitle = process.env.BUILD_HOOK_TITLE || 'Developer Build';
 
   if (!buildHookUrl) {
     throw new Error('Build Hook URL is not provided.');
