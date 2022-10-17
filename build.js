@@ -13,6 +13,7 @@ const indexFile = path.join(distDir, 'index.html');
 const assetName = '404-test.png';
 const assetPath = path.join(distDir, assetName);
 const assetId = 'CONT4778DFFB40034B7485389B8B41A96427';
+const test = "foo";
 
 const axios = require('axios');
 const httpsProxyAgent = require('https-proxy-agent');
